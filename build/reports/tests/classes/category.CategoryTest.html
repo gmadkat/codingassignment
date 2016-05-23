@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class category.CategoryTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class category.CategoryTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/category.html">category</a> &gt; CategoryTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.449s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">validCategory</td>
+<td>0.449s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>23:08:50.505 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class category.CategoryTest]
+23:08:50.509 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:08:50.513 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:08:50.524 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [category.CategoryTest] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+23:08:50.539 [Test worker] DEBUG org.springframework.test.context.web.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@27e29fa3 declaringClass = 'category.CategoryTest', classes = '{class org.springframework.mock.web.MockServletContext}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+23:08:50.548 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [category.CategoryTest]: class path resource [category/CategoryTest-context.xml] does not exist
+23:08:50.548 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [category.CategoryTest]: class path resource [category/CategoryTestContext.groovy] does not exist
+23:08:50.549 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [category.CategoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:08:50.550 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [category.CategoryTest]
+23:08:50.553 [Test worker] DEBUG org.springframework.test.context.web.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [category.CategoryTest]: using defaults.
+23:08:50.561 [Test worker] INFO org.springframework.test.context.web.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+23:08:50.564 [Test worker] INFO org.springframework.test.context.web.WebTestContextBootstrapper - Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+23:08:50.567 [Test worker] INFO org.springframework.test.context.web.WebTestContextBootstrapper - Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+23:08:50.568 [Test worker] INFO org.springframework.test.context.web.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2856f7d2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7616cc5c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6d652d70, org.springframework.test.context.support.DirtiesContextTestExecutionListener@636dc43e]
+23:08:50.570 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [category.CategoryTest]
+23:08:50.571 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [category.CategoryTest]
+23:08:50.574 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [category.CategoryTest]
+23:08:50.575 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [category.CategoryTest]
+23:08:50.576 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [category.CategoryTest]
+23:08:50.576 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [category.CategoryTest]
+23:08:50.578 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@6671efa7 testClass = CategoryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@294f1ec0 testClass = CategoryTest, locations = '{}', classes = '{class org.springframework.mock.web.MockServletContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+23:08:50.579 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [category.CategoryTest]
+23:08:50.579 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [category.CategoryTest]
+23:08:50.643 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+23:08:50.645 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+23:08:50.645 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+23:08:50.647 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.3.5.RELEASE)
+
+2016-05-22 23:08:50.832  INFO 31217 --- [    Test worker] category.CategoryTest                    : Starting CategoryTest on Gowris-MBP.home with PID 31217 (/Users/gmadkat/neustar/gs-rest-service/complete/build/classes/test started by gmadkat in /Users/gmadkat/neustar/gs-rest-service/complete)
+2016-05-22 23:08:50.838  INFO 31217 --- [    Test worker] category.CategoryTest                    : No active profile set, falling back to default profiles: default
+2016-05-22 23:08:50.893  INFO 31217 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@28e796a1: startup date [Sun May 22 23:08:50 EDT 2016]; root of context hierarchy
+2016-05-22 23:08:50.974  INFO 31217 --- [    Test worker] category.CategoryTest                    : Started CategoryTest in 0.32 seconds (JVM running for 1.052)
+2016-05-22 23:08:51.129  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/clean2],methods=[POST]}&quot; onto public java.lang.String category.CategoryController.categoryclean2(javax.servlet.http.HttpServletRequest)
+2016-05-22 23:08:51.131  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/clean1],methods=[POST]}&quot; onto public category.Categories category.CategoryController.categoryclean1(category.Categories)
+2016-05-22 23:08:51.131  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/clean],methods=[POST]}&quot; onto public java.lang.String[] category.CategoryController.categoryclean(java.lang.String[])
+2016-05-22 23:08:51.132  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/list]}&quot; onto public java.util.ArrayList&lt;category.Category&gt; category.CategoryController.categorylist()
+2016-05-22 23:08:51.132  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/add]}&quot; onto public category.Category category.CategoryController.categoryadd(java.lang.String)
+2016-05-22 23:08:51.133  INFO 31217 --- [    Test worker] ilder$StaticRequestMappingHandlerMapping : Mapped &quot;{[/category/delete]}&quot; onto public java.lang.String category.CategoryController.categorydelete(java.lang.String)
+2016-05-22 23:08:51.290  INFO 31217 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@7e162fc3
+2016-05-22 23:08:51.341  INFO 31217 --- [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring FrameworkServlet ''
+2016-05-22 23:08:51.341  INFO 31217 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2016-05-22 23:08:51.342  INFO 31217 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+ctor1 PEOPLEsubcat1
+catlist category.Category@4d0a05b4
+catlist category.Category@428d13b7
+catlist category.Category@5463b48a
+catlist category.Category@137d601c
+catlist category.Category@e47e062
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.3</a> at May 22, 2016 11:08:51 PM</p>
+</div>
+</div>
+</body>
+</html>
