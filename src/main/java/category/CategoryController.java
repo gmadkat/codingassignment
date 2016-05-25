@@ -31,36 +31,14 @@ public class CategoryController {
        catlist.add(new Category(counter.incrementAndGet(), "OTHER"));
     }
 
-    @RequestMapping(value = "/category/clean2", method=RequestMethod.POST)
-    @ResponseBody
-    public String categoryclean2(HttpServletRequest request) {
-
-        System.out.println("POST: " + request.getParameterMap().size()); // prints POST: 0
-        Map m=request.getParameterMap();
-        Set s = m.entrySet();
-        Iterator it = s.iterator();
- 
-            while(it.hasNext()){
- 
-                Map.Entry<String,String[]> entry = (Map.Entry<String,String[]>)it.next();
- 
-                String key             = entry.getKey();
-                String[] value         = entry.getValue();
-        System.out.println("POST: " + key  + " value = " + value[0]);
-            }
- 
-        return "";
-
+    @RequestMapping(value="/category/clean",method=RequestMethod.POST)
+    public Categories[] categoryclean(@RequestBody Categories[] catslist)
+    {
+         System.out.println("catslist " + catslist.length);
+        return catslist;
     }
 
-    //@ModelAttribute("Categories")
-    @RequestMapping(value = "/category/clean1", method=RequestMethod.POST)
-    @ResponseBody
-    public Categories categoryclean1(@ModelAttribute("catslist") Categories catslist) {
-         System.out.println("catslist " + catslist);
-        return catslist; //todo fix
-    }
-
+/*
     @RequestMapping(value = "/category/clean", method=RequestMethod.POST)
     @ResponseBody
     public String[] categoryclean(@ModelAttribute("catslist") String[] catslist) {
@@ -71,7 +49,9 @@ public class CategoryController {
         return catslist; //todo fix
         //return catlist;
     }
+*/
 
+    // method that lists the valid categories
     @RequestMapping("/category/list")
     public ArrayList<Category> categorylist() {
         for (int i = 0; i < catlist.size(); i++)
@@ -79,15 +59,31 @@ public class CategoryController {
         return catlist;
     }
 
+    // method that adds a category the valid category list
     @RequestMapping("/category/add")
     public Category categoryadd(@RequestParam(value="name", defaultValue="category1") String name) {
+        System.out.println("catadd " + name);
+        for (int i = 0; i < catlist.size(); i++)
+         System.out.println("catlist " + catlist.get(i).getCategoryName());
         Category cat =  new Category(counter.incrementAndGet(), name); 
         catlist.add(cat);
+        for (int i = 0; i < catlist.size(); i++)
+         System.out.println("catlist " + catlist.get(i).getCategoryName());
         return cat;
     }
-    @RequestMapping("/category/delete")
-    public String categorydelete(@RequestParam(value="name", defaultValue="category1") String name) {
-        return name; //todo delete this
+
+    // method that deletes a category from the valid category list
+    @RequestMapping(value = "/category/delete", method=RequestMethod.POST)
+    public boolean categorydelete(@RequestParam(value="name") String name) {
+        for (int i = 0; i < catlist.size(); i++)
+         System.out.println("catlist " + catlist.get(i).getCategoryName());
+        Category cat =  new Category(counter.incrementAndGet(), name); 
+        boolean b = catlist.contains(cat);
+        int index1 = catlist.indexOf(cat);
+        catlist.remove(index1);
+        for (int i = 0; i < catlist.size(); i++)
+         System.out.println("catlist " + catlist.get(i).getCategoryName());
+        return b;
     }
 
 }

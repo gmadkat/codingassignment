@@ -17,4 +17,17 @@ public class Category {
     public String getCategoryName() {
         return categoryName;
     }
+
+   @Override
+    public boolean equals(Object object)
+    {
+        boolean equals = false;
+
+        if (object != null && object instanceof Category)
+        {
+            equals = this.categoryName.equals(((Category) object).categoryName);
+        }
+
+        return equals;
+    }
 }
