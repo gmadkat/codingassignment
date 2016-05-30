@@ -1,5 +1,8 @@
 package category;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 public class Categories {
 
     private String categoryName;
@@ -24,10 +27,15 @@ public class Categories {
         System.out.println("setter = " + c);
         this.subCategoryName = c;
     }
+
+    @JsonProperty(required = true)
+    @ApiModelProperty(notes = "The name of the category", required = true)
     public String getCategoryName() {
         System.out.println("getter = " + categoryName);
         return categoryName;
     }
+    @JsonProperty(required = true)
+    @ApiModelProperty(notes = "The name of the subcategory", required = true)
     public String getSubCategoryName() {
         return subCategoryName;
     }

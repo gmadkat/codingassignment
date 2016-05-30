@@ -18,7 +18,7 @@ public class Category {
         return categoryName;
     }
 
-   @Override
+    @Override
     public boolean equals(Object object)
     {
         boolean equals = false;
