@@ -41,6 +41,6 @@ public class CategoryTest {
     public void validCategory() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/category/list").accept(MediaType.APPLICATION_JSON))
                .andExpect(status().isOk())
-	       .andExpect(content().string(equalTo("[{\"id\":1,\"categoryName\":\"ANIMAL\"},{\"id\":2,\"categoryName\":\"PERSON\"},{\"id\":3,\"categoryName\":\"COMPUTER\"},{\"id\":4,\"categoryName\":\"PLACE\"},{\"id\":5,\"categoryName\":\"OTHER\"}]")));
+	       .andExpect(content().string(equalTo("[{\"id\":1,\"categoryName\":\"ANIMAL\",\"count\":0},{\"id\":2,\"categoryName\":\"PERSON\",\"count\":0},{\"id\":3,\"categoryName\":\"COMPUTER\",\"count\":0},{\"id\":4,\"categoryName\":\"PLACE\",\"count\":0},{\"id\":5,\"categoryName\":\"OTHER\",\"count\":0}]")));
     }
 }
