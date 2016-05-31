@@ -125,7 +125,7 @@ public class CategoryController {
     }
 
 
-    @RequestMapping(value="/category/cleanclasslist",method=RequestMethod.POST)
+    @RequestMapping(value="/category/cleanclasslist",method=RequestMethod.POST, produces = "application/json")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
         @ApiImplicitParam(name = "catslist", value = "category list", required = true, dataType = "array", paramType = "query")
@@ -146,7 +146,7 @@ public class CategoryController {
     }
 
 
-    @RequestMapping(value="/category/clean",method=RequestMethod.POST)
+    @RequestMapping(value="/category/clean",method=RequestMethod.POST, produces = "application/json")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
         @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "array", paramType = "query")
@@ -173,7 +173,7 @@ public class CategoryController {
         return retlist; 
     }
 
-    @RequestMapping(value="/category/count",method=RequestMethod.POST)
+    @RequestMapping(value="/category/count",method=RequestMethod.POST, produces = "application/json")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
         @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "array", paramType = "query")
