@@ -16,11 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
- 
-//import com.wordnik.swagger.annotations.Api;
-//import com.wordnik.swagger.annotations.ApiOperation;
-//import com.wordnik.swagger.annotations.ApiResponse;
-//import com.wordnik.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +29,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @RestController
 public class CategoryController {
 
@@ -42,6 +41,15 @@ public class CategoryController {
     private Categories[] categoriesList;
     private int numreturned;
 
+public static String asJsonString(final Object obj) {
+    try {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String jsonContent = mapper.writeValueAsString(obj);
+        return jsonContent;
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}  
     public CategoryController() {
        categoryList  = new ArrayList<Category>();
        categoriesList = new Categories[10];
@@ -126,7 +134,7 @@ public class CategoryController {
 
 
     @RequestMapping(value="/category/cleanclasslist",method=RequestMethod.POST, produces = "application/json")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    //@ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
         @ApiImplicitParam(name = "catslist", value = "category list", required = true, dataType = "array", paramType = "query")
       })
@@ -139,13 +147,14 @@ public class CategoryController {
             @ApiResponse(code = 500, message = "Failure")}) 
     public ArrayList<Categories> categoryCleanClass(@RequestBody ArrayList<Categories> catslist)
     {
-         System.out.println("catslist " + catslist.size());
+         System.out.println("\n\n\nGOWRI\n\n\ncatslist " + catslist.size());
          ArrayList<Categories> retlist = new ArrayList<Categories>();
          retlist = categoryCleanHelper(catslist);
          return retlist;
     }
 
 
+/*
     @RequestMapping(value="/category/clean",method=RequestMethod.POST, produces = "application/json")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
@@ -172,6 +181,7 @@ public class CategoryController {
         retlist = categoryCleanHelper(catlist);
         return retlist; 
     }
+*/
 
     @RequestMapping(value="/category/count",method=RequestMethod.POST, produces = "application/json")
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -185,20 +195,21 @@ public class CategoryController {
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
-    public ArrayList<Category> categoryCount(@RequestBody String[] catlist1) {
-        System.out.println("catslist " + catlist1.length);
+    public ArrayList<Category> categoryCount(@RequestBody ArrayList<String> catlist1) {
+        System.out.println("catslist " + catlist1.size());
 
         ArrayList<Categories> catlist = new ArrayList<Categories>();
         ArrayList<Category> reslist = new ArrayList<Category>();
         
-        for (int i = 0; i < catlist1.length; i++) {
-           System.out.println("catslist " + catlist1[i]);
-           String[] tmp = catlist1[i].split(":");
+        for (int i = 0; i < catlist1.size(); i++) {
+           System.out.println("catslist " + catlist1.get(i));
+           String[] tmp = catlist1.get(i).split(":");
            catlist.add(new Categories(tmp[0], tmp[1]));
         }
         reslist = categoryCountHelper(catlist);
         return reslist; 
     }
+
 
     // method that lists the valid categories
     @ApiOperation(value = "getCategoryList", nickname = "getCategoryList")
@@ -213,8 +224,9 @@ public class CategoryController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public ArrayList<Category> categorylist() {
-        for (int i = 0; i < categoryList.size(); i++)
-         System.out.println("catlist " + categoryList.get(i));
+       String[] test = new String[1];
+        test[0] = new String("ANIMAL:aaa");
+       System.out.println("GOWRI " + asJsonString(test));
         return categoryList;
     }
 
@@ -259,7 +271,9 @@ public class CategoryController {
         Category cat =  new Category(counter.incrementAndGet(), name); 
         boolean b = categoryList.contains(cat);
         int index1 = categoryList.indexOf(cat);
-        categoryList.remove(index1);
+        if (index1 >= 0)
+           categoryList.remove(index1);
+        else b = false;
         for (int i = 0; i < categoryList.size(); i++)
          System.out.println("catlist " + categoryList.get(i).getCategoryName());
         return b;

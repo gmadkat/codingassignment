@@ -3,9 +3,16 @@ package category;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Categories {
 
+    @GeneratedValue
     private String categoryName;
+    @GeneratedValue
     private String subCategoryName;
 
     public Categories() {
