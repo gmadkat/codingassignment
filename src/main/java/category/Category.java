@@ -9,6 +9,11 @@ public class Category implements Comparable {
     private final String categoryName;
     private int count;
 
+    public Category() {
+        this.id = 0;
+        this.count = 0;
+        this.categoryName = "";
+    }
     public Category(long id, String catname) {
         this.id = id;
         this.count = 0;

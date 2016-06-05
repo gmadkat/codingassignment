@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -127,6 +128,7 @@ public static String asJsonString(final Object obj) {
                tmp1.add(x);
             }
          }
+         Collections.sort(tmp1, Collections.reverseOrder());
          return tmp1;
     }
 
