@@ -38,7 +38,6 @@ public class CategoryController {
 
     private final AtomicLong counter = new AtomicLong();
     private ArrayList<Category> categoryList;
-    private Categories[] categoriesList;
     private int numreturned;
 
 public static String asJsonString(final Object obj) {
@@ -52,7 +51,6 @@ public static String asJsonString(final Object obj) {
 }  
     public CategoryController() {
        categoryList  = new ArrayList<Category>();
-       categoriesList = new Categories[10];
        numreturned = 0;
        categoryList.add(new Category(counter.incrementAndGet(), "ANIMAL"));
        categoryList.add(new Category(counter.incrementAndGet(), "PERSON"));
@@ -134,9 +132,8 @@ public static String asJsonString(final Object obj) {
 
 
     @RequestMapping(value="/category/cleanclasslist",method=RequestMethod.POST, produces = "application/json")
-    //@ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "catslist", value = "category list", required = true, dataType = "array", paramType = "query")
+        @ApiImplicitParam(name = "catslist", value = "category list", required = true, dataType = "ArrayList<Categories>", paramType = "body")
       })
     @ApiOperation(value = "CleanCategories", nickname= "Fetch List of Categories and clean them and return cleaned list to user.")
     @ApiResponses(value = { 
@@ -154,48 +151,68 @@ public static String asJsonString(final Object obj) {
     }
 
 
-/*
     @RequestMapping(value="/category/clean",method=RequestMethod.POST, produces = "application/json")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "array", paramType = "query")
+        @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "ArrayList",  paramType = "body")
       })
     @ApiOperation(value = "CleanCategoriesStrings", nickname= "Fetch List of Categories as a colon delimited string and clean them and return cleaned list to user.")
-    @ApiResponses(value = { 
-            @ApiResponse(code = 200, message = "Success", response = Arrays.class),
-            @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 403, message = "Forbidden"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 500, message = "Failure")}) 
-    public ArrayList<Categories> categoryClean(@RequestBody String[] catlist1) {
-        System.out.println("catslist " + catlist1.length);
-
-        ArrayList<Categories> catlist = new ArrayList<Categories>();
-        ArrayList<Categories> retlist = new ArrayList<Categories>();
-        
-        for (int i = 0; i < catlist1.length; i++) {
-           System.out.println("catslist " + catlist1[i]);
-           String[] tmp = catlist1[i].split(":");
-           catlist.add(new Categories(tmp[0], tmp[1]));
-        }
-        retlist = categoryCleanHelper(catlist);
-        return retlist; 
-    }
-*/
-
-    @RequestMapping(value="/category/count",method=RequestMethod.POST, produces = "application/json")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "array", paramType = "query")
-      })
-    @ApiOperation(value = "CategoryCount", nickname= "Fetch List of Categories as a colon delimited string and clean them and return count per Category sorted in descending order.")
     @ApiResponses(value = { 
             @ApiResponse(code = 200, message = "Success", response = ArrayList.class),
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
-    public ArrayList<Category> categoryCount(@RequestBody ArrayList<String> catlist1) {
+     public ArrayList<Categories> categoryClean(@RequestBody ArrayList<String> catlist1) {
+        System.out.println("catslist " + catlist1.size());
+
+        ArrayList<Categories> catlist = new ArrayList<Categories>();
+        ArrayList<Categories> retlist = new ArrayList<Categories>();
+        
+        for (int i = 0; i < catlist1.size(); i++) {
+           System.out.println("catslist " + catlist1.get(i));
+           String[] tmp = catlist1.get(i).split(":");
+           catlist.add(new Categories(tmp[0], tmp[1]));
+        }
+        retlist = categoryCleanHelper(catlist);
+        return retlist; 
+    }
+
+    @RequestMapping(value="/category/countclasslist",method=RequestMethod.POST, produces = "application/json")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "ArrayList", paramType = "body")
+      })
+    @ApiOperation(value = "CategoryCount", nickname= "Fetch List of Categories and clean them and return count per Category sorted in descending order.")
+    @ApiResponses(value = { 
+            @ApiResponse(code = 200, message = "Success", response = ArrayList.class),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")}) 
+    public ArrayList<Category> categoryCount(@RequestBody ArrayList<Categories> catlist1) {
+        System.out.println("catslist " + catlist1.size());
+
+        ArrayList<Category> reslist = new ArrayList<Category>();
+        
+        reslist = categoryCountHelper(catlist1);
+        System.out.println("count reslist " + reslist.size());
+        return reslist; 
+    }
+
+
+//  example body usage: ["ANIMAL:aaa","PERSON:bob","PERSON:bob","INVALID:cat"]
+//  curl -X POST --data '["ANIMAL:aaa","PERSON:bbb","OTHER:ccc","ANIMAL:aaaa","ANIMAL:sssss"]' -H "Content-Type:application/json"  http://localhost:8080/category/clean
+    @RequestMapping(value="/category/count",method=RequestMethod.POST, produces = "application/json")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "catlist1", value = "category list", required = true, dataType = "ArrayList", paramType = "body")
+      })
+    @ApiOperation(value = "CategoryCount", nickname= "Fetch List of Categories as a colon delimited string and clean them and return count per Category sorted in descending order.", response = ArrayList.class)
+    @ApiResponses(value = { 
+            @ApiResponse(code = 200, message = "Success", response = ArrayList.class),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")}) 
+    public ArrayList<Category> categoryCountString(@RequestBody ArrayList<String> catlist1) {
         System.out.println("catslist " + catlist1.size());
 
         ArrayList<Categories> catlist = new ArrayList<Categories>();
@@ -207,6 +224,7 @@ public static String asJsonString(final Object obj) {
            catlist.add(new Categories(tmp[0], tmp[1]));
         }
         reslist = categoryCountHelper(catlist);
+        System.out.println("count reslist " + reslist.size());
         return reslist; 
     }
 
@@ -237,7 +255,7 @@ public static String asJsonString(final Object obj) {
        @ApiImplicitParam(name = "name", value = "Category name", required = false, dataType = "string", paramType = "query", defaultValue="NONE")
       })
     @ApiResponses(value = { 
-            @ApiResponse(code = 200, message = "Success", response = ArrayList.class),
+            @ApiResponse(code = 201, message = "Success", response = Category.class),
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),
@@ -260,7 +278,7 @@ public static String asJsonString(final Object obj) {
        @ApiImplicitParam(name = "name", value = "Category name", required = false, dataType = "string", paramType = "query", defaultValue="NONE")
       })
     @ApiResponses(value = { 
-            @ApiResponse(code = 200, message = "Success", response = ArrayList.class),
+            @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),

@@ -1,5 +1,8 @@
 package category;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 public class Category implements Comparable {
 
     private final long id;
@@ -24,6 +27,8 @@ public class Category implements Comparable {
        this.count = ct;
     }
 
+    @JsonProperty(required = true)
+    @ApiModelProperty(notes = "The name of the user", required = true)
     public String getCategoryName() {
         return categoryName;
     }
