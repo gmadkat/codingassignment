@@ -235,6 +235,8 @@ http://localhost:8080/v2/api-docs?group=categories
 
 Some mock screenshots of the API are on the docs directory in this source tree
 
+NOTE: Authentication has not been added for this version but planned for the next version. 
+
 
 ##QA Plan:
 
