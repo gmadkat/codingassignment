@@ -1,6 +1,6 @@
-Architect Coding homework assignment
+#Architect Coding homework assignment
 
-Build Instructions:
+##Build Instructions:
 
 The implementation for Version 1.0 of the coding assignment is checked into github on:
 https://github.com/spring-guides/gs-spring-boot.git
@@ -17,14 +17,14 @@ There is a REST API swagger/springfox based UI on:
 http://localhost:8080/v2/api-docs?group=categories
 
 
-Description of the REST endpoints:
+##Description of the REST endpoints:
 
-Title : List All Categories.
+###Title : List All Categories.
 URL : /category/list
 Method : GET 
 URL Params : none
 
-Title : Add a new Category
+###Title : Add a new Category
 URL : /category/add
 Method : POST
 URL Params : /add?name='nameofcategory'
@@ -47,7 +47,7 @@ Added Value from Model:
 500	Failure
 
 
-Title : Delete a Category
+###Title : Delete a Category
 URL : /category/delete
 Method : POST
 URL Params : /delete?name='nameofcategory'
@@ -63,7 +63,7 @@ HTTP Status Code:
 404	Not Found
 500	Failure
 
-Title : Clean a list of categories and sub categories
+###Title : Clean a list of categories and sub categories
 URL : /category/clean
 Method : POST
 URL Params : /cleanclasslist
@@ -83,7 +83,7 @@ List of cleaned Categories:
 500	Failure
 
 
-Title : Clean a list of categories and sub categories and return a summary of count of subcategories by category in a list.
+###Title : Clean a list of categories and sub categories and return a summary of count of subcategories by category in a list.
 URL : /category/countclasslist
 Method : POST
 URL Params : /cleanandcount?catslist='categorylist'
@@ -103,7 +103,7 @@ List of counted Categories:
 404	Not Found
 500	Failure
 
-Title : Clean a list of categories and sub categories, alternative API with String input
+###Title : Clean a list of categories and sub categories, alternative API with String input
 URL : /category/clean
 Method : POST
 URL Params : /clean
@@ -123,7 +123,7 @@ List of cleaned Categories:
 500	Failure
 
 
-Title : Clean a list of categories and sub categories in colon delimited String format, and return a summary of count of subcategories by category in a list.
+###Title : Clean a list of categories and sub categories in colon delimited String format, and return a summary of count of subcategories by category in a list.
 URL : /category/countclasslist
 Method : POST
 URL Params : /cleanandcount?catslist='categorylist'
@@ -145,13 +145,13 @@ List of counted Categories:
 500	Failure
 
 
-Documentation and API Contract:
+##Documentation and API Contract:
 
 There is a REST API documentation using swagger/springfox based UI on:
 http://localhost:8080/v2/api-docs?group=categories
 
 
-QA Plan:
+##QA Plan:
 
 1. Unit Tests are implemented using JUnit.
 
@@ -160,21 +160,21 @@ QA Plan:
 3. QA Cloud Environment in mock production environment to be implemented 
 
 
-Deployment Strategies after QA clears the build:
+##Deployment Strategies after QA clears the build:
 
 1. Spring Web services to Cloud Foundry
 
 2. Ansible/Puppet to edge sites for QA and production.
 
 
-Monitoring and Logging:
+##Monitoring and Logging:
 
 1. Monitor the health of the deployments
 
 2. Log all requests coming in to an instance of the service
 
 
-Load Balancing changes to be implemented:
+##Load Balancing changes to be implemented:
 
 1. Store no state in the service
 
