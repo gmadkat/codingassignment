@@ -80,96 +80,151 @@ true/false
 HTTP Status Code: 
 
 200	Success
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 ###Title : Clean a list of categories and sub categories
+
 URL : /category/clean
+
 Method : POST
+
 URL Params : /cleanclasslist
+
 Body details: The list is a array of Categories, a class that has two String members, a Category and a subCategory. catslist example.. '[{"categoryName": "Animal","subCategoryName": "Dog"},{"categoryName": "PERSON","subCategoryName": "Alice"}]'
+
 Success Response: Success returns a clean list with no invalid categories and noduplicates. eg. '[{"categoryName": "Animal","subCategoryName": "Dog"},{"categoryName": "PERSON","subCategoryName": "Alice"}]'
+
 Response Messages:
+
 HTTP Status Code: 200	
 Success
+
 List of cleaned Categories:
+
 [{
   "categoryName": "string",
   “subCategoryName": "string"
 }]
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 
 ###Title : Clean a list of categories and sub categories and return a summary of count of subcategories by category in a list.
+
 URL : /category/countclasslist
+
 Method : POST
+
 URL Params : /cleanandcount?catslist='categorylist'
+
 Parameter details: The list is a array of Categories, a class that has two String members, a Category and a subCategory. catslist example.. '[{"categoryName": "Animal","subCategoryName": "Dog"},{"categoryName": "PERSON","subCategoryName": "Alice"}]'
+
 Success Response: Success returns a list of Categories with an integer count of the number of sub categories per categories summed up
+
 Response Messages:
+
 HTTP Status Code: 200	
 Success
+
 List of counted Categories:
 [{
   "categoryName": "string",
   “count”: “integer”
   “id: : “integer”
 }]
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 ###Title : Clean a list of categories and sub categories, alternative API with String input
+
 URL : /category/clean
+
 Method : POST
+
 URL Params : /clean
+
 Body details: The list is a array of Categories in String format, a String with colon delimited Category and a subCategory. catslist example.. ‘[{“ANIMAL:dog”, ”ANIMAL:dog”, “PERSON:Alice"}]'
+
 Success Response: Success returns a clean list with no invalid categories and noduplicates. eg. '[{"categoryName": "Animal","subCategoryName": "Dog"},{"categoryName": "PERSON","subCategoryName": "Alice"}]'
+
 Response Messages:
+
 HTTP Status Code: 200	
 Success
+
 List of cleaned Categories:
+
 [{
   "categoryName": "string",
   “subCategoryName": "string"
 }]
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 
 ###Title : Clean a list of categories and sub categories in colon delimited String format, and return a summary of count of subcategories by category in a list.
+
 URL : /category/countclasslist
+
 Method : POST
+
 URL Params : /cleanandcount?catslist='categorylist'
+
 Body details: The list is a array of Categories in String format, a String with colon delimited Category and a subCategory. catslist example.. ‘[{“ANIMAL:dog”, ”ANIMAL:dog”, “PERSON:Alice"}]'
+
 Success Response: Success returns a list of Categories with an integer count of the number of sub categories per categories summed up
+
 Response Messages:
 
 HTTP Status Code: 200	
 Success
+
 List of counted Categories:
+
 [{
   "categoryName": "string",
   “count”: “integer”
   “id: : “integer”
 }]
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 
 ##Documentation and API Contract:
 
 There is a REST API documentation using swagger/springfox based UI on:
+
 http://localhost:8080/v2/api-docs?group=categories
 
 
