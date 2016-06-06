@@ -1,5 +1,9 @@
 #Architect Coding homework assignment
 
+This repository contains the Spring based Java source code for the REST API for Categories as defined 
+in the requirements from Neustar. This project was developed on a Mac OS El Capitan. 
+
+
 ##Build Instructions:
 
 The implementation for Version 1.0 of the coding assignment is checked into github on:
@@ -14,8 +18,10 @@ Execute and launch the server using:
 java -jar  build/libs/category-service-0.1.0.jar
 
 There is a REST API swagger/springfox based UI on:
+
 http://localhost:8080/v2/api-docs?group=categories
 
+The Swagger redistributable is on the dist directory in this source tree. Run dist/index.html from any browser and use the url above after launching the webservice. 
 
 ##Description of the REST endpoints:
 
