@@ -233,6 +233,8 @@ There is a REST API documentation using swagger/springfox based UI on:
 
 http://localhost:8080/v2/api-docs?group=categories
 
+Some mock screenshots of the API are on the docs directory in this source tree
+
 
 ##QA Plan:
 
