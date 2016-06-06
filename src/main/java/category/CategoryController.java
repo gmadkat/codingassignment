@@ -64,16 +64,12 @@ public static String asJsonString(final Object obj) {
         
         boolean found = false;
         for (int i = 0; i < retlist1.size(); i++) {
-            System.out.print("exists? " + cat.getCategoryName() + cat.getSubCategoryName());
-            System.out.println(retlist1.get(i).getCategoryName() + retlist1.get(i).getSubCategoryName());
             if (cat.getCategoryName().equals(retlist1.get(i).getCategoryName() )
                 && cat.getSubCategoryName().equals(retlist1.get(i).getSubCategoryName())) {
-        System.out.println("exists " + cat.getCategoryName() + cat.getSubCategoryName());
                 found = true;
                 break;
             }
         }
-        System.out.println("found " + found);
         return found;
    }
 
@@ -89,7 +85,6 @@ public static String asJsonString(final Object obj) {
 
     public ArrayList<Categories> categoryCleanHelper(ArrayList<Categories> catslist)
     {
-         System.out.println("catslist " + catslist.size());
          ArrayList<Categories> retlist = new ArrayList<Categories>();
 
          int j = 0;
@@ -100,7 +95,6 @@ public static String asJsonString(final Object obj) {
 
            if (isValidCategory(catslist.get(i).getCategoryName()) 
                    && (isExists(retlist, catslist.get(i)) == false)) {
-                System.out.println("Adding: "+ catslist.get(i).getCategoryName() + " " + catslist.get(i).getSubCategoryName());  
                 retlist.add(catslist.get(i));
                 numreturned += 1;
             }
@@ -146,7 +140,6 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 500, message = "Failure")}) 
     public ArrayList<Categories> categoryCleanClass(@RequestBody ArrayList<Categories> catslist)
     {
-         System.out.println("\n\n\nGOWRI\n\n\ncatslist " + catslist.size());
          ArrayList<Categories> retlist = new ArrayList<Categories>();
          retlist = categoryCleanHelper(catslist);
          return retlist;
@@ -165,13 +158,11 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
      public ArrayList<Categories> categoryClean(@RequestBody ArrayList<String> catlist1) {
-        System.out.println("catslist " + catlist1.size());
 
         ArrayList<Categories> catlist = new ArrayList<Categories>();
         ArrayList<Categories> retlist = new ArrayList<Categories>();
         
         for (int i = 0; i < catlist1.size(); i++) {
-           System.out.println("catslist " + catlist1.get(i));
            String[] tmp = catlist1.get(i).split(":");
            catlist.add(new Categories(tmp[0], tmp[1]));
         }
@@ -191,12 +182,10 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public ArrayList<Category> categoryCount(@RequestBody ArrayList<Categories> catlist1) {
-        System.out.println("catslist " + catlist1.size());
 
         ArrayList<Category> reslist = new ArrayList<Category>();
         
         reslist = categoryCountHelper(catlist1);
-        System.out.println("count reslist " + reslist.size());
         return reslist; 
     }
 
@@ -215,18 +204,15 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public ArrayList<Category> categoryCountString(@RequestBody ArrayList<String> catlist1) {
-        System.out.println("catslist " + catlist1.size());
 
         ArrayList<Categories> catlist = new ArrayList<Categories>();
         ArrayList<Category> reslist = new ArrayList<Category>();
         
         for (int i = 0; i < catlist1.size(); i++) {
-           System.out.println("catslist " + catlist1.get(i));
            String[] tmp = catlist1.get(i).split(":");
            catlist.add(new Categories(tmp[0], tmp[1]));
         }
         reslist = categoryCountHelper(catlist);
-        System.out.println("count reslist " + reslist.size());
         return reslist; 
     }
 
@@ -246,7 +232,6 @@ public static String asJsonString(final Object obj) {
     public ArrayList<Category> categorylist() {
        String[] test = new String[1];
         test[0] = new String("ANIMAL:aaa");
-       System.out.println("GOWRI " + asJsonString(test));
         return categoryList;
     }
 
@@ -263,13 +248,8 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public Category categoryadd(@RequestParam(value="name", defaultValue="category1") String name) {
-        System.out.println("catadd " + name);
-        for (int i = 0; i < categoryList.size(); i++)
-         System.out.println("catlist " + categoryList.get(i).getCategoryName());
         Category cat =  new Category(counter.incrementAndGet(), name); 
         categoryList.add(cat);
-        for (int i = 0; i < categoryList.size(); i++)
-           System.out.println("catlist " + categoryList.get(i).getCategoryName());
         return cat;
     }
 
@@ -286,16 +266,12 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public boolean categorydelete(@RequestParam(value="name") String name) {
-        for (int i = 0; i <   categoryList.size(); i++)
-         System.out.println("catlist " + categoryList.get(i).getCategoryName());
         Category cat =  new Category(counter.incrementAndGet(), name); 
         boolean b = categoryList.contains(cat);
         int index1 = categoryList.indexOf(cat);
         if (index1 >= 0)
            categoryList.remove(index1);
         else b = false;
-        for (int i = 0; i < categoryList.size(); i++)
-         System.out.println("catlist " + categoryList.get(i).getCategoryName());
         return b;
     }
 }
