@@ -20,43 +20,65 @@ http://localhost:8080/v2/api-docs?group=categories
 ##Description of the REST endpoints:
 
 ###Title : List All Categories.
+
 URL : /category/list
+
 Method : GET 
+
 URL Params : none
 
 ###Title : Add a new Category
+
 URL : /category/add
+
 Method : POST
+
 URL Params : /add?name='nameofcategory'
+
 Parameters
+
 Parameter name:	 Category name
 Type:	String
 
 Response Messages:
-HTTP Status Code: 200	
-Success
+
+HTTP Status Code: 
+200	Success
 Added Value from Model:
 {
   "categoryName": "string",
   "count": 0,
   "id": 0
 }
+
 401	Unauthorized
+
 403	Forbidden
+
 404	Not Found
+
 500	Failure
 
 
 ###Title : Delete a Category
+
 URL : /category/delete
+
 Method : POST
+
 URL Params : /delete?name='nameofcategory'
+
 Parameters
+
 Parameter name:	 Category name
 Type:	String
+
 Response Messages:
+
 true/false
+
 HTTP Status Code: 
+
 200	Success
 401	Unauthorized
 403	Forbidden
