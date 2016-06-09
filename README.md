@@ -70,7 +70,7 @@ Added Value from Model:
 
 URL : /category/delete
 
-Method : POST
+Method : DELETE
 
 URL Params : /delete?name='nameofcategory'
 
