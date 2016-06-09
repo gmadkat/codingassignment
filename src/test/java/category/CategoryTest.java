@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -86,7 +87,7 @@ public class CategoryTest {
     
     @Test
     public void testDeleteCategory() throws Exception {
-        this.mockMvc.perform(post("/category/delete?name=TESTCAT")
+        this.mockMvc.perform(delete("/category/delete?name=TESTCAT")
                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
                .andExpect(content().string("true"));
         this.mockMvc.perform(get("/category/list")

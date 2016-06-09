@@ -255,7 +255,7 @@ public static String asJsonString(final Object obj) {
 
     // method that deletes a category from the valid category list
     @ApiOperation(value = "deleteCategory", nickname = "deleteCategory")
-    @RequestMapping(method = RequestMethod.POST, path="/category/delete", produces = "application/json")
+    @RequestMapping(method = RequestMethod.DELETE, path="/category/delete", produces = "application/json")
     @ApiImplicitParams({
        @ApiImplicitParam(name = "name", value = "Category name", required = false, dataType = "string", paramType = "query", defaultValue="NONE")
       })
