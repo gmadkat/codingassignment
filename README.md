@@ -10,12 +10,18 @@ The implementation for Version 1.0 of the coding assignment is checked into gith
  https://github.com/gmadkat/codingassignment
 
 After checking out the project, build with either Gradle or Maven:
-./gradlew build 
+```bash
+$>./gradlew build 
+```
 or 
+```bash
 mvn package
+```
 
 Execute and launch the server using:
-java -jar  build/libs/category-service-0.1.0.jar
+```bash
+$> java -jar build/libs/category-service-0.1.0.jar
+```
 
 There is a REST API swagger/springfox based UI on:
 
