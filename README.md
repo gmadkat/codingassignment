@@ -7,7 +7,7 @@ in the requirements from Neustar. This project was developed on a Mac OS El Capi
 ##Build Instructions:
 
 The implementation for Version 1.0 of the coding assignment is checked into github on:
-https://github.com/spring-guides/gs-spring-boot.git
+ https://github.com/gmadkat/codingassignment
 
 After checking out the project, build with either Gradle or Maven:
 ./gradlew build 
