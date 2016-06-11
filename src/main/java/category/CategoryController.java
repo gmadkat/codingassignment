@@ -73,14 +73,14 @@ public static String asJsonString(final Object obj) {
         return found;
    }
 
-    public boolean isValidCategory(String cat) {
+    public int isValidCategory(String cat) {
         for(int i = 0; i < categoryList.size(); i++){
           if (categoryList.get(i).getCategoryName().equals(cat))
           {   
-             return true;
+             return i;
           }
         }
-        return false;
+        return -1;
     }
 
     public ArrayList<Categories> categoryCleanHelper(ArrayList<Categories> catslist)
@@ -93,7 +93,7 @@ public static String asJsonString(final Object obj) {
             // check if the category is valid and that there is not an existing
             // pair already in results 
 
-           if (isValidCategory(catslist.get(i).getCategoryName()) 
+           if ((isValidCategory(catslist.get(i).getCategoryName()) >= 0) 
                    && (isExists(retlist, catslist.get(i)) == false)) {
                 retlist.add(catslist.get(i));
                 numreturned += 1;
@@ -248,9 +248,15 @@ public static String asJsonString(final Object obj) {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")}) 
     public Category categoryadd(@RequestParam(value="name", defaultValue="category1") String name) {
-        Category cat =  new Category(counter.incrementAndGet(), name); 
-        categoryList.add(cat);
-        return cat;
+        int found = isValidCategory(name);
+        if (found == -1) {
+            Category cat =  new Category(counter.incrementAndGet(), name); 
+            categoryList.add(cat);
+            return cat;
+        }
+        else { 
+           return categoryList.get(found);
+        }
     }
 
     // method that deletes a category from the valid category list
